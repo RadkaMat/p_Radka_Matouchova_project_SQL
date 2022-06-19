@@ -16,7 +16,7 @@ CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_mezivypocet_01 AS /*prům
 GROUP BY 
 	 year,
 	 category_code;
-/*pozn. k ř. 13: nový sloupec year pro pozdějsí sloučení tabulek mezd a cen potravin*/
+/*pozn. k ř. 13: nový sloupec s vyfiltrovyným rokem pro pozdějsí sloučení tabulek mezd a cen potravin*/
 
 CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_mezivypocet_02 AS /*průměrné mzdy všech odvětví českého hospodářství za vybrané roky*/
    SELECT
@@ -66,8 +66,7 @@ CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_secondary_final AS /*vyfi
       AND region_in_world LIKE '%Europe%'
  ORDER BY YEAR;
 
--- SQL skript generující datové podklady pro výzkumné otázky
-
+-- SQL skript generující datové podklady pro 1. výzkumnou otázku
 CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_first_question AS /*vyhodnocení, zda mzdy rostou nebo klesají*/
    SELECT
 	  industry_branch,
@@ -89,6 +88,8 @@ CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_first_question AS /*vyhodn
  GROUP BY 
 	  industry_branch;
 
+-- SQL skript generující datové podklady pro 2. výzkumnou otázku
+
 CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_second_question AS /*výpočet kupní síly ve vztahu k mléku a chlebu*/
    SELECT
 	  YEAR,
@@ -104,6 +105,8 @@ CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_second_question AS /*výpo
  	  grocery, 
 	  industry_branch, 
 	  year;
+
+-- SQL skript generující datové podklady pro 3. výzkumnou otázku
 
 CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_third_question AS
    SELECT
@@ -125,7 +128,9 @@ CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_third_question AS
        GROUP BY grocery,
 		YEAR
 	) AS percent_counting;
-/*pozn. k ř. 122: procentuální meziroční přírustek průměrné mzdy*/
+/*pozn. k ř. 125: procentuální meziroční přírustek průměrné mzdy*/
+
+-- SQL skript generující datové podklady pro 4. výzkumnou otázku
 
 CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_fourth_question_calculation AS
    SELECT
@@ -153,9 +158,9 @@ CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_fourth_question_calculati
 		  grocery,year,
 		  industry_branch
 	  ) as percent_counting2;
-/*pozn. k ř. 143: Procentuální nárust cen potravin
-pozn. k ř. 145: Procentuální nárust mezd
-pozn. k ř. 147: Rozdíl mezi procentální nárustem cen potravin a procentuálním nárustem mezd*/
+/*pozn. k ř. 148: Procentuální nárust cen potravin
+pozn. k ř. 150: Procentuální nárust mezd
+pozn. k ř. 152: Rozdíl mezi procentální nárustem cen potravin a procentuálním nárustem mezd*/
 
 CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_fourth_question AS
    SELECT
@@ -168,6 +173,8 @@ CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_fourth_question AS
      FROM t_radka_matouchova_project_SQL_fourth_question_calculation
     WHERE fourth_answer = 'výzarné zdražení';
   
+-- SQL skript generující datové podklady pro 5. výzkumnou otázku
+
 CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_fifth_question_calculation_01 AS /*vyfiltrování DPH pro Českou republiku*/
    SELECT
 	  *,
@@ -205,7 +212,7 @@ CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_fifth_question_calculatio
  GROUP BY 
  	  industry_branch,
 	  year;
-/*pozn. k ř. 184: Pro zjednodušení výpočtu vlivu DPH jsou všechny kategorie potravit sečteny do jednoho čísla tzv. nákupní košík AS shopping cart.*/
+/*pozn. k ř. 191: Pro zjednodušení výpočtu vlivu DPH jsou všechny kategorie potravit sečteny do jednoho čísla tzv. nákupní košík AS shopping cart.*/
 
 CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_fifth_question AS /*Zhodnocení vlivu HDP ČR na mzdy a ceny potravin*/
    SELECT
