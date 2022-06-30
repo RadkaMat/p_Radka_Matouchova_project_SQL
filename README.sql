@@ -62,9 +62,9 @@ CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_secondary_final AS /*vyfi
      FROM economies e
      JOIN countries c
        ON c.country = e.country
-    WHERE YEAR >= 2006 AND YEAR <= 2018
+    WHERE year >= 2006 AND year <= 2018
       AND region_in_world LIKE '%Europe%'
- ORDER BY YEAR;
+ ORDER BY year;
 
 -- SQL skript generující datové podklady pro 1. výzkumnou otázku
 CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_first_question AS /*vyhodnocení, zda mzdy rostou nebo klesají*/
@@ -77,13 +77,13 @@ CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_first_question AS /*vyhodn
 	  (
 	  SELECT
 		 industry_branch,
-		 YEAR,
+		 year,
 		 average_income,
 		 year_increase
 	    FROM t_radka_matouchova_project_SQL_primary_final
 	GROUP BY 
 		  industry_branch,
-		  YEAR 
+		  year 
  	  ) AS prepocet
  GROUP BY 
 	  industry_branch;
@@ -92,7 +92,7 @@ CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_first_question AS /*vyhodn
 
 CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_second_question AS /*výpočet kupní síly ve vztahu k mléku a chlebu*/
    SELECT
-	  YEAR,
+	  year,
 	  grocery,
 	  price_unit,
 	  industry_branch,
@@ -100,7 +100,7 @@ CREATE OR REPLACE VIEW v_radka_matouchova_project_SQL_second_question AS /*výpo
 	  ROUND(average_income/avg_price,0) AS purchasing_power
      FROM t_radka_matouchova_project_SQL_primary_final
     WHERE grocery IN ('Mléko polotučné pasterované','Chléb konzumní kmínový')
-      AND YEAR IN ('2006','2018')
+      AND year IN ('2006','2018')
  ORDER BY 
  	  grocery, 
 	  industry_branch, 
@@ -194,7 +194,7 @@ CREATE OR REPLACE TABLE t_radka_matouchova_project_SQL_fifth_question_calculatio
     FROM
 	  (
 	  SELECT
-		 YEAR,
+		 year,
 		 grocery,
 		 avg_price,
 		 price_unit,
