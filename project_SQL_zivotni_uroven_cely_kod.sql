@@ -1,4 +1,4 @@
-# p_radka_Matouchova_project_SQL
+# p_Radka_Matouchova_project_SQL
 SQL project version Maria DB 22.0.4
 
 -- SQL skript generující primární a sekundární tabulky
