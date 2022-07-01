@@ -34,4 +34,4 @@ Komentář autora README.sql k datovým podkladům
    výpočet procentuální změny ceny nákupního košíku a mezd k současnému a následujícímu roku
    Vyhodnocení: pokud nárůst cen potravin a mezd v daném a následujícím roce byl vyšší než nárůst DPH v daném roce, vliv DPH byl potvrzen (vše v %)
    
-   Zdroj všech podkladových dat, otevřená data ČR: https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F00025593%2F7ddcb833bddeeb84db39004d7e276b87
+   Zdroj podkladových dat: otevřená data ČR
