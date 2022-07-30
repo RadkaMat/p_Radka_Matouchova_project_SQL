@@ -27,7 +27,7 @@ Komentář autora README.sql k datovým podkladům
 6. Čtvrtá výzkumná otázka = v_radka_matouchova_project_SQL_fourth_question
    výpočet procentuální meziroční změny cen potravin a mezd a jejich rozdíl
    Vyhodnocení: pokud rozdíl je větší než 20 (%), výsledkem je výrazné zdražení
-   vyfiltrování výrazného zdražení
+   Výsledek: vyfiltrování výrazného zdražení
 
 7. Pátá výzkumná otázka = v_radka_matouchova_project_SQL_fifth_question
    součet všech cen potravin do jedné hodnoty  za jednotlivé roky = nákupní košík, kolik stojí nákup všech potravin ve vybraných letech
